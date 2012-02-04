@@ -2,7 +2,7 @@ CCDN Forum README.
 ==================
 
 
-Notes:  
+Notes: 
 ------
 
 This bundle is for the symfony framework and thusly requires Symfony 2.0.x and PHP 5.3.6
@@ -56,3 +56,5 @@ Installation:
 6) Symlink assets to your public web directory by running this in the command line:
 
 	php app/console assets:install --symlink web/
+	
+Then your done, if you need further help or want to contribute please join the community at www.codeconsortium.com where you can also see the forum in action.
