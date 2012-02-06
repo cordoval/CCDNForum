@@ -1,9 +1,9 @@
-{% extends 'CCDNCommonCommonBundle:Layout:layout_body_left.html.twig' %}
+{% extends 'CCDNComponentCommonBundle:Layout:layout_body_left.html.twig' %}
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('bundles/ccdncommoncommon/css/form.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('bundles/ccdncommoncrumbtrail/css/crumbs.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/ccdncomponentcommon/css/form.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/ccdncomponentcrumbtrail/css/crumbs.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block title %}{{ 'title.board.edit'| trans({'%board_name%': board.name}, 'CCDNForumForumAdminBundle') }}{% endblock %}
@@ -11,10 +11,10 @@
 {% block sidebar %}
 	{% if is_granted('ROLE_MODERATOR') %}
 	<div class="common_box_5 bg_header_smoke">
-		<div class="common_box_header"><span class="heading_glow">{{ 'sidebar.header.special' | trans({}, 'CCDNCommonCommonBundle') }}</span></div>
-		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_moderator_forum_cp') }}">{{ 'general.view.link_moderate' | trans({}, 'CCDNCommonCommonBundle') }}</a></div>
+		<div class="common_box_header"><span class="heading_glow">{{ 'sidebar.header.special' | trans({}, 'CCDNComponentCommonBundle') }}</span></div>
+		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_moderator_forum_cp') }}">{{ 'general.view.link_moderate' | trans({}, 'CCDNComponentCommonBundle') }}</a></div>
 		{% if is_granted('ROLE_ADMIN') %}
-		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_admin_forum_cp') }}">{{ 'general.view.link_administrate' | trans({}, 'CCDNCommonCommonBundle') }}</a></div>
+		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_admin_forum_cp') }}">{{ 'general.view.link_administrate' | trans({}, 'CCDNComponentCommonBundle') }}</a></div>
 		{% endif %}
 	</div>
 	{% endif %}
@@ -22,9 +22,9 @@
 
 {% block body %}
 
-{% include 'CCDNCommonCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
+{% include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
 
-{% include 'CCDNCommonCommonBundle:Flashes:flashes.html.twig' %}
+{% include 'CCDNComponentCommonBundle:Flashes:flashes.html.twig' %}
 
 <div class="common_box_5 bg_header_smoke">
 	<div class="common_box_header">
@@ -32,7 +32,7 @@
 	</div>
 	<div class="common_box_panel common_tool_strip">
 		<span class="common_h2">
-			<img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncommoncommon/images/icons/Black/16x16/16x16_board.png') }}" />
+			<img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncomponentcommon/images/icons/Black/16x16/16x16_board.png') }}" />
 			<a class="board_link" href="{{ path('cc_forum_board_show', {'board_id': board.getId }) }}">{{ board.getName }}</a>
 		</span>
 	</div>
@@ -80,6 +80,6 @@
 	</div>
 </div>
 
-{% include 'CCDNCommonCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
+{% include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
 
 {% endblock %}

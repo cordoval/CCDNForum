@@ -1,8 +1,8 @@
-{% extends 'CCDNCommonCommonBundle:Layout:layout_body_left.html.twig' %}
+{% extends 'CCDNComponentCommonBundle:Layout:layout_body_left.html.twig' %}
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('bundles/ccdncommoncrumbtrail/css/crumbs.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/ccdncomponentcrumbtrail/css/crumbs.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block title %}{{ 'title.flag.show.all' | trans({}, 'CCDNForumForumModeratorBundle') }}{% endblock %}
@@ -10,10 +10,10 @@
 {% block sidebar %}
 	{% if is_granted('ROLE_MODERATOR') %}
 	<div class="common_box_5 bg_header_smoke">
-		<div class="common_box_header"><span class="heading_glow">{{ 'sidebar.header.special' | trans({}, 'CCDNCommonCommonBundle') }}</span></div>
-		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_moderator_forum_cp') }}">{{ 'general.view.link_moderate' | trans({}, 'CCDNCommonCommonBundle') }}</a></div>
+		<div class="common_box_header"><span class="heading_glow">{{ 'sidebar.header.special' | trans({}, 'CCDNComponentCommonBundle') }}</span></div>
+		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_moderator_forum_cp') }}">{{ 'general.view.link_moderate' | trans({}, 'CCDNComponentCommonBundle') }}</a></div>
 		{% if is_granted('ROLE_ADMIN') %}
-		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_admin_forum_cp') }}">{{ 'general.view.link_administrate' | trans({}, 'CCDNCommonCommonBundle') }}</a></div>
+		<div class="common_box_panel"><a class="sidebar" href="{{ path('cc_admin_forum_cp') }}">{{ 'general.view.link_administrate' | trans({}, 'CCDNComponentCommonBundle') }}</a></div>
 		{% endif %}
 	</div>
 	{% endif %}
@@ -35,16 +35,16 @@
 
 {% block body %}
 
-{% include 'CCDNCommonCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
+{% include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
 
-{% include 'CCDNCommonCommonBundle:Flashes:flashes.html.twig' %}
+{% include 'CCDNComponentCommonBundle:Flashes:flashes.html.twig' %}
 
 <div class="common_box_5 bg_header_smoke">
 	<div class="common_box_header">
 		<span class="heading_glow">{{ 'title.flag.show.all' | trans({}, 'CCDNForumForumModeratorBundle') }}</span>
 	</div>
 	<div class="common_box_panel">
-		<img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncommoncommon/images/icons/Black/16x16/16x16_flag.png') }}" />
+		<img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncomponentcommon/images/icons/Black/16x16/16x16_flag.png') }}" />
 		<a class="heading_link" href="{{ path(app.request.attributes.get('_route')) }}">{{ 'title.flag.show.all' | trans({}, 'CCDNForumForumModeratorBundle') }}</a><br />
 	</div>
 	<div class="common_box_panel common_tool_strip">
@@ -64,7 +64,7 @@
 			<tbody>
 			{% for post_key, post in posts %}
 				<tr class="{{ cycler(['row_odd', 'row_even'], 'posts') }} }}">
-					<td class="h_align_centre v_align_middle"><img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncommoncommon/images/icons/Black/16x16/16x16_communication.png') }}" /></td>
+					<td class="h_align_centre v_align_middle"><img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncomponentcommon/images/icons/Black/16x16/16x16_communication.png') }}" /></td>
 					<td class="h_align_left v_align_top">
 						<a href="{{ path('cc_forum_topic_show', {'topic_id': post.getTopic.getId }) }}">#{{post.getId}}&nbsp;{{ post.getTopic.getTitle }}</a>
 						<br />
@@ -97,7 +97,7 @@
 								<tbody>
 									{% for flag_key, flag in post.flags %}
 									<tr class="{{ cycle(['row_odd', 'row_even'], flag_key) }}">
-										<td class="padding_5 h_align_centre v_align_middle"><img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncommoncommon/images/icons/Black/16x16/16x16_flag.png') }}" /></td>
+										<td class="padding_5 h_align_centre v_align_middle"><img class="icon_16x16" width="16px" height="16px" src="{{ asset('bundles/ccdncomponentcommon/images/icons/Black/16x16/16x16_flag.png') }}" /></td>
 										<td class="padding_5 h_align_left v_align_middle">
 											<a href="{{ path('cc_moderator_forum_show_flag', {'flag_id': flag.getId }) }}">{{ reason_codes[flag.getReason] }}</a>
 										</td>
@@ -138,6 +138,6 @@
 	</div>
 </div>
 
-{% include 'CCDNCommonCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
+{% include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } %}
 
 {% endblock %}
