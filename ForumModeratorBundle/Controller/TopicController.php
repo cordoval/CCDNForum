@@ -47,15 +47,15 @@ class TopicController extends ContainerAware
 
 		$topics_paginated = $this->container->get('topic.repository')->findClosedTopicsForModeratorsPaginated();
 			
-		$topics_per_board_page = $this->container->getParameter('ccdn_forum_forum.board.topics_per_board_page');
-		$topics_paginated->setMaxPerPage($topics_per_board_page);
+		$topics_per_page = $this->container->getParameter('ccdn_forum_forum_moderator.topic.topics_per_page');
+		$topics_paginated->setMaxPerPage($topics_per_page);
 		$topics_paginated->setCurrentPage($page, false, true);
 				
 		if ( ! $topics_paginated) {
 			throw new NotFoundHttpException('no closed topics exist!');
 		}
 		
-		$posts_per_topic_page = $this->container->getParameter('ccdn_forum_forum.topic.posts_per_topic_page');
+		$posts_per_page = $this->container->getParameter('ccdn_forum_forum_moderator.topic.posts_per_page');
 		
 		// setup crumb trail.
 		$crumb_trail = $this->container->get('crumb_trail')
@@ -63,12 +63,12 @@ class TopicController extends ContainerAware
 				$this->container->get('router')->generate('cc_moderator_forum_show_all_closed_topics'), "home");
 		
 		return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Topic:show_closed.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 			'user' => $user,
 			'topics' => $topics_paginated,
 			'crumbs' => $crumb_trail,
 			'pager' => $topics_paginated,
-			'posts_per_topic_page' => $posts_per_topic_page,
+			'posts_per_page' => $posts_per_page,
 		));
 	}
 	
@@ -260,7 +260,7 @@ class TopicController extends ContainerAware
 			->add($crumbDelete, $this->container->get('router')->generate('cc_forum_topic_reply', array('topic_id' => $topic->getId())), "trash");
 	
 		return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Topic:delete_topic.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 //			'page_title' => $pageTitle,
 //			'confirmation_message' => $confirmationMessage,
 			'topic' => $topic,
@@ -308,7 +308,7 @@ class TopicController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_moderator.template.engine');
     }
 
 }

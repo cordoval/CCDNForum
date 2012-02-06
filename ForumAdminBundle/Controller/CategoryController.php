@@ -45,17 +45,17 @@ class CategoryController extends ContainerAware
 		
 		$categories = $this->container->get('category.repository')->findAllJoinedToBoard();
 		
-		$topics_per_board_page = $this->container->getParameter('ccdn_forum_forum.board.topics_per_board_page');
+		$topics_per_page = $this->container->getParameter('ccdn_forum_forum_admin.board.topics_per_page');
 		
 		$crumb_trail = $this->container->get('crumb_trail')
 			->add($this->container->get('translator')->trans('crumbs.category.index', array(), 'CCDNForumForumAdminBundle'), 
 				$this->container->get('router')->generate('cc_admin_forum_category_index'), "home");
 		
 		return $this->container->get('templating')->renderResponse('CCDNForumForumAdminBundle:Category:index.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_admin.user.profile_route'),
 			'crumbs' => $crumb_trail,
 			'categories' => $categories,
-			'topics_per_board_page' => $topics_per_board_page,
+			'topics_per_page' => $topics_per_page,
 			));
     }
 
@@ -262,7 +262,7 @@ class CategoryController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_admin.template.engine');
     }
 
 }

@@ -76,7 +76,7 @@ class TrashController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_moderator.template.engine');
     }
 
 }

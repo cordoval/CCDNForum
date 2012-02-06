@@ -48,8 +48,8 @@ class PostController extends ContainerAware
 
 		$posts_paginated = $this->container->get('post.repository')->findLockedPostsForModeratorsPaginated();
 			
-		$posts_per_topic_page = $this->container->getParameter('ccdn_forum_forum.topic.posts_per_topic_page');
-		$posts_paginated->setMaxPerPage($posts_per_topic_page);
+		$posts_per_page = $this->container->getParameter('ccdn_forum_forum_moderator.post.posts_per_page');
+		$posts_paginated->setMaxPerPage($posts_per_page);
 		$posts_paginated->setCurrentPage($page, false, true);
 				
 		if (!$posts_paginated) {
@@ -62,7 +62,7 @@ class PostController extends ContainerAware
 				$this->container->get('router')->generate('cc_moderator_forum_show_all_locked_posts'), "home");
 				
 		return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Post:show_locked.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 			'user' => $user,
 			'crumbs' => $crumb_trail,
 			'posts' => $posts_paginated,
@@ -169,6 +169,6 @@ class PostController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_moderator.template.engine');
     }
 }

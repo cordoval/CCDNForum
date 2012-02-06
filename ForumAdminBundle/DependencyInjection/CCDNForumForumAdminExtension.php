@@ -28,6 +28,8 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class CCDNForumForumAdminExtension extends Extension
 {
+	
+	
     /**
      * {@inheritDoc}
      */
@@ -38,5 +40,43 @@ class CCDNForumForumAdminExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+		$container->setParameter('ccdn_forum_forum_admin.template.engine', $config['template']['engine']);
+		$container->setParameter('ccdn_forum_forum_admin.user.profile_route', $config['user']['profile_route']);
+		
+		$this->getCategorySection($container, $config);
+		$this->getBoardSection($container, $config);
     }
+	
+	
+    /**
+     * {@inheritDoc}
+     */
+	public function getAlias()
+	{
+		return 'ccdn_forum_forum_admin';
+	}
+	
+	
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getCategorySection($container, $config)
+	{
+		
+	}
+
+
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */	
+	private function getBoardSection($container, $config)
+	{
+		$container->setParameter('ccdn_forum_forum_admin.board.topics_per_page', $config['board']['topics_per_page']);
+	}
+	
 }

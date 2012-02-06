@@ -235,6 +235,7 @@ class BoardController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_admin.template.engine');
     }
+
 }

@@ -41,10 +41,39 @@ Installation:
 	
 4) In your app/config/config.yml add:    
 
-	# for CodeConsortium ForumBundle Pagination      
-	ccdn_forum_forum:  
-	    topics_per_board_page: 40  
-	    posts_per_topic_page: 20
+	ccdn_forum_forum:
+	    user:
+	        profile_route: cc_profile_show_by_id
+	    template:
+	        engine: twig
+	        theme: CCDNForumForumBundle:Form:fields.html.twig
+	    board:
+	        topics_per_page: 40
+	    topic:
+	        posts_per_page: 10
+
+	ccdn_forum_forum_admin:
+	    user:
+	        profile_route: cc_profile_show_by_id
+	    template:
+	        engine: twig
+	        theme: CCDNForumForumAdminBundle:fields.html.twig
+	    board:
+	        topics_per_page: 40
+
+	ccdn_forum_forum_moderator:
+	    user:
+	        profile_route: cc_profile_show_by_id
+	    template:
+	        engine: twig
+	        theme: CCDNForumForumModeratorBundle:fields.html.twig
+	    flag:
+	        flags_per_page: 40
+	    topic:
+	        topics_per_page: 40
+	        posts_per_page: 20
+	    post:
+	        posts_per_page: 40
 	  
 5) In your app/config/routing.yml add:  
 

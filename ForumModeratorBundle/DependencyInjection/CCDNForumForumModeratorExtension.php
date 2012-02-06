@@ -28,6 +28,8 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class CCDNForumForumModeratorExtension extends Extension
 {
+	
+	
     /**
      * {@inheritDoc}
      */
@@ -38,5 +40,72 @@ class CCDNForumForumModeratorExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+
+		$container->setParameter('ccdn_forum_forum_moderator.template.engine', $config['template']['engine']);
+		$container->setParameter('ccdn_forum_forum_moderator.user.profile_route', $config['user']['profile_route']);
+		
+		$this->getFlagSection($container, $config);
+		$this->getTopicSection($container, $config);
+		$this->getPostSection($container, $config);
+		$this->getTrashSection($container, $config);
+		
     }
+	
+	
+    /**
+     * {@inheritDoc}
+     */
+	public function getAlias()
+	{
+		return 'ccdn_forum_forum_moderator';
+	}
+	
+	
+
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getFlagSection($container, $config)
+	{
+		$container->setParameter('ccdn_forum_forum_moderator.flag.flags_per_page', $config['flag']['flags_per_page']);
+	}
+	
+
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getTopicSection($container, $config)
+	{
+		$container->setParameter('ccdn_forum_forum_moderator.topic.topics_per_page', $config['topic']['topics_per_page']);
+		$container->setParameter('ccdn_forum_forum_moderator.topic.posts_per_page', $config['topic']['posts_per_page']);
+		
+	}
+	
+
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getPostSection($container, $config)
+	{
+		$container->setParameter('ccdn_forum_forum_moderator.post.posts_per_page', $config['post']['posts_per_page']);
+	}
+	
+
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getTrashSection($container, $config)
+	{
+		
+	}
+	
 }

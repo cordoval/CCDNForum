@@ -55,8 +55,8 @@ class FlagController extends ContainerAware
 
 		$flags_paginated = $this->container->get('flag.repository')->findForModeratorsByStatusPaginated($status);
 			
-		$flags_per_topic_page = $this->container->getParameter('ccdn_forum_forum.board.topics_per_board_page');
-		$flags_paginated->setMaxPerPage($flags_per_topic_page);
+		$flags_per_page = $this->container->getParameter('ccdn_forum_forum_moderator.flag.flags_per_page');
+		$flags_paginated->setMaxPerPage($flags_per_page);
 		$flags_paginated->setCurrentPage($page, false, true);
 				
 		if (!$flags_paginated) {
@@ -69,7 +69,7 @@ class FlagController extends ContainerAware
 				$this->container->get('router')->generate('cc_moderator_forum_show_all_flagged_posts'), "home");
 				
 		return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Flag:show_flagged.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 			'user' => $user,
 			'posts' => $flags_paginated,
 			'pager' => $flags_paginated,
@@ -110,7 +110,7 @@ class FlagController extends ContainerAware
 				$this->container->get('router')->generate('cc_moderator_forum_show_flag', array('flag_id' => $flag->getId())), "flag");
 				
 		return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Flag:show_flag.html.' . $this->getEngine(), array(
-			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+			'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 			'user' => $user,
 			'flag' => $flag,
 			'crumbs' => $crumb_trail,
@@ -167,7 +167,7 @@ class FlagController extends ContainerAware
 					$this->container->get('router')->generate('cc_moderator_forum_mark_flag', array('flag_id' => $flag->getId())), "edit");
 			
 			return $this->container->get('templating')->renderResponse('CCDNForumForumModeratorBundle:Flag:flag_mark.html.' . $this->getEngine(), array(
-				'user_profile_route' => $this->container->getParameter('ccdn_forum_forum.user.profile_route'),
+				'user_profile_route' => $this->container->getParameter('ccdn_forum_forum_moderator.user.profile_route'),
 				'user' => $user,
 				'flag' => $flag,
 				'post' => $flag->getPost(),
@@ -188,7 +188,7 @@ class FlagController extends ContainerAware
 	 */
 	protected function getEngine()
     {
-        return $this->container->getParameter('ccdn_forum_forum.template.engine');
+        return $this->container->getParameter('ccdn_forum_forum_moderator.template.engine');
     }
 
 }
