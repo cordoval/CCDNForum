@@ -39,7 +39,7 @@ Installation:
 	new CCDNForum\ForumAdminBundle\CCDNForumForumAdminBundle(),
 	new CCDNForum\ForumModeratorBundle\CCDNForumForumModeratorBundle(),
 	
-4) In your app/config/config.yml add:    
+4) In your app/config/config.yml add (this is configs for all 3 forum bundles):    
 
 	ccdn_forum_forum:
 	    user:
