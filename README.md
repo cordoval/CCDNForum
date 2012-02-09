@@ -33,17 +33,62 @@ Installation:
  
 1) Download and install the dependencies.
    
-2) Create the directory src/CCDNForum in your Symfony directory.
-  
-3) Add the ForumBundle to CCDNForurm directory.  
+   You can set deps to include:
 
-3) In your AppKernel.php add the following bundles to the registerBundles method array:  
+```sh
+[FOSUserBundle]
+    git=http://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=/bundles/FOS/UserBundle
 
-	new CCDNForum\ForumBundle\CCDNForumForumBundle(),    
+[EWZTimeBundle]
+    git=http://github.com/excelwebzone/EWZRecaptchaBundle.git
+    target=/bundles/EWZ/Bundle/RecaptchaBundle
+
+[pagerfanta]
+    git=http://github.com/whiteoctober/Pagerfanta.git
+
+[PagerfantaBundle]
+    git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=/bundles/WhiteOctober/PagerfantaBundle
+
+[CommonBundle]
+    git=http://github.com/codeconsortium/CommonBundle.git
+    target=/bundles/CCDNComponent/CommonBundle
+
+[BBCodeBundle]
+    git=http://github.com/codeconsortium/BBCodeBundle.git
+    target=/bundles/CCDNComponent/BBCodeBundle
+
+[CrumbTrailBundle]
+    git=http://github.com/codeconsortium/CrumbTrailBundle.git
+    target=/bundles/CCDNComponent/CrumbTrailBundle
+
+[CrumbTrailBundle]
+    git=http://github.com/codeconsortium/CrumbTrailBundle.git
+    target=/bundles/CCDNComponent/CrumbTrailBundle
+
+[CCDNForum]
+    git=http://github.com/codeconsortium/CCDNForum.git
+    target=/bundles/CCDNForum
+```
+add to your autoload:
+
+```php
+    'CCDNComponent'    => __DIR__.'/../vendor/bundles',
+    'CCDNForum'        => __DIR__.'/../vendor/bundles',
+```
+and then run `bin/vendors install` script.
+
+2) In your AppKernel.php add the following bundles to the registerBundles method array:  
+
+	new CCDNComponent\CommonBundle\CCDNComponentCommonBundle(),
+	new CCDNComponent\BBCodeBundle\CCDNComponentBBCodeBundle(),
+	new CCDNComponent\CrumbTrailBundle\CCDNComponentCrumbTrailBundle(),
+	new CCDNForum\ForumBundle\CCDNForumForumBundle(),
 	new CCDNForum\ForumAdminBundle\CCDNForumForumAdminBundle(),
 	new CCDNForum\ForumModeratorBundle\CCDNForumForumModeratorBundle(),
 	
-4) In your app/config/config.yml add (this is configs for all 3 forum bundles):    
+3) In your app/config/config.yml add (this is configs for all 3 forum bundles):    
 
 	ccdn_forum_forum:
 	    user:
@@ -116,14 +161,14 @@ Installation:
 	        layout_templates:
 	            show_locked: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 	  
-5) In your app/config/routing.yml add:  
+4) In your app/config/routing.yml add:  
 
 	forum:  
 	    resource: "@CCDNForumForumBundle/Resources/config/routing.yml"  
 	    resource: "@CCDNForumForumAdminBundle/Resources/config/routing.yml"  
 	    resource: "@CCDNForumForumModeratorBundle/Resources/config/routing.yml"  
 
-6) Symlink assets to your public web directory by running this in the command line:
+5) Symlink assets to your public web directory by running this in the command line:
 
 	php app/console assets:install --symlink web/
 	
