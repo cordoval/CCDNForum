@@ -85,83 +85,83 @@ and then run `bin/vendors install` script.
 	new CCDNComponent\BBCodeBundle\CCDNComponentBBCodeBundle(),
 	new CCDNComponent\CrumbTrailBundle\CCDNComponentCrumbTrailBundle(),
 	new CCDNForum\ForumBundle\CCDNForumForumBundle(),
-	new CCDNForum\ForumAdminBundle\CCDNForumForumAdminBundle(),
-	new CCDNForum\ForumModeratorBundle\CCDNForumForumModeratorBundle(),
+	new CCDNForum\AdminBundle\CCDNForumAdminBundle(),
+	new CCDNForum\ModeratorBundle\CCDNForumModeratorBundle(),
 ```
 	
 3) In your app/config/config.yml add (this is configs for all 3 forum bundles):    
 
 ```sh
-	ccdn_forum_forum:
-	    user:
-	        profile_route: cc_profile_show_by_id
-	    template:
-	        engine: twig
-	        theme: CCDNForumForumBundle:Form:fields.html.twig
-	    category:
-	        layout_templates:
-	            index: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    board:
-	        topics_per_page: 40
-	        layout_templates:
-	            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    topic:
-	        posts_per_page: 10
-	        layout_templates:
-	            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            reply: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    post:
-	        layout_templates:
-	            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            flag: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            edit_post: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            edit_topic: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            delete_post: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+ccdn_forum_forum:
+    user:
+        profile_route: cc_profile_show_by_id
+    template:
+        engine: twig
+        theme: CCDNForumForumBundle:Form:fields.html.twig
+    category:
+        layout_templates:
+            index: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    board:
+        topics_per_page: 40
+        layout_templates:
+            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    topic:
+        posts_per_page: 10
+        layout_templates:
+            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            reply: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    post:
+        layout_templates:
+            show: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            flag: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            edit_post: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            edit_topic: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            delete_post: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 
-	ccdn_forum_forum_admin:
-	    user:
-	        profile_route: cc_profile_show_by_id
-	    template:
-	        engine: twig
-	        theme: CCDNForumForumAdminBundle:fields.html.twig
-	    category:
-	        layout_templates:
-	            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            delete_category: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            edit: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            index: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    board:
-	        topics_per_page: 40
-	        layout_templates:
-	            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            delete_board: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            edit: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+ccdn_forum_admin:
+    user:
+        profile_route: cc_profile_show_by_id
+    template:
+        engine: twig
+        theme: CCDNForumAdminBundle:fields.html.twig
+    category:
+        layout_templates:
+            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            delete_category: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            edit: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            index: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    board:
+        topics_per_page: 40
+        layout_templates:
+            create: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            delete_board: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            edit: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 
-	ccdn_forum_forum_moderator:
-	    user:
-	        profile_route: cc_profile_show_by_id
-	    template:
-	        engine: twig
-	        theme: CCDNForumForumModeratorBundle:fields.html.twig
-	    flag:
-	        flags_per_page: 40
-	        layout_templates:
-	            flag_mark: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            show_flag: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            show_flagged: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    topic:
-	        topics_per_page: 40
-	        posts_per_page: 20
-	        layout_templates:
-	            change_board: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            show_closed: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	            delete_topic: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-	    post:
-	        posts_per_page: 40
-	        layout_templates:
-	            show_locked: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+ccdn_forum_moderator:
+    user:
+        profile_route: cc_profile_show_by_id
+    template:
+        engine: twig
+        theme: CCDNForumModeratorBundle:fields.html.twig
+    flag:
+        flags_per_page: 40
+        layout_templates:
+            flag_mark: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            show_flag: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            show_flagged: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    topic:
+        topics_per_page: 40
+        posts_per_page: 20
+        layout_templates:
+            change_board: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            show_closed: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+            delete_topic: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+    post:
+        posts_per_page: 40
+        layout_templates:
+            show_locked: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 ```
 
 Set the appropriate layout templates you want under the sections 'layout_templates' and the 
@@ -170,10 +170,10 @@ route to a users profile if you are not using the CCDNUser\ProfileBundle. Otherw
 4) In your app/config/routing.yml add:  
 
 ```sh
-	forum:  
-	    resource: "@CCDNForumForumBundle/Resources/config/routing.yml"  
-	    resource: "@CCDNForumForumAdminBundle/Resources/config/routing.yml"  
-	    resource: "@CCDNForumForumModeratorBundle/Resources/config/routing.yml"  
+forum:  
+    resource: "@CCDNForumForumBundle/Resources/config/routing.yml"  
+    resource: "@CCDNForumAdminBundle/Resources/config/routing.yml"  
+    resource: "@CCDNForumModeratorBundle/Resources/config/routing.yml"  
 ```
 
 5) Symlink assets to your public web directory by running this in the command line:
