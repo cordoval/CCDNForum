@@ -80,15 +80,18 @@ and then run `bin/vendors install` script.
 
 2) In your AppKernel.php add the following bundles to the registerBundles method array:  
 
+```php
 	new CCDNComponent\CommonBundle\CCDNComponentCommonBundle(),
 	new CCDNComponent\BBCodeBundle\CCDNComponentBBCodeBundle(),
 	new CCDNComponent\CrumbTrailBundle\CCDNComponentCrumbTrailBundle(),
 	new CCDNForum\ForumBundle\CCDNForumForumBundle(),
 	new CCDNForum\ForumAdminBundle\CCDNForumForumAdminBundle(),
 	new CCDNForum\ForumModeratorBundle\CCDNForumForumModeratorBundle(),
+```
 	
 3) In your app/config/config.yml add (this is configs for all 3 forum bundles):    
 
+```sh
 	ccdn_forum_forum:
 	    user:
 	        profile_route: cc_profile_show_by_id
@@ -159,16 +162,24 @@ and then run `bin/vendors install` script.
 	        posts_per_page: 40
 	        layout_templates:
 	            show_locked: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
+```
+
+Set the appropriate layout templates you want under the sections 'layout_templates' and the 
+route to a users profile if you are not using the CCDNUser\ProfileBundle. Otherwise use defaults.
 	  
 4) In your app/config/routing.yml add:  
 
+```sh
 	forum:  
 	    resource: "@CCDNForumForumBundle/Resources/config/routing.yml"  
 	    resource: "@CCDNForumForumAdminBundle/Resources/config/routing.yml"  
 	    resource: "@CCDNForumForumModeratorBundle/Resources/config/routing.yml"  
+```
 
 5) Symlink assets to your public web directory by running this in the command line:
 
+```sh
 	php app/console assets:install --symlink web/
+```
 	
 Then your done, if you need further help/support, have suggestions or want to contribute please join the community at [www.codeconsortium.com](http://www.codeconsortium.com)
