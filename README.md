@@ -23,10 +23,13 @@ file that was distributed with this source code.
 Dependencies:
 -------------
 
-1. [PagerFanta](https://github.com/whiteoctober/Pagerfanta).
-2. [CCDNComponent BBCodeBundle](https://github.com/codeconsortium/BBCodeBundle).
-3. [CCDNComponent CrumbTrailBundle](https://github.com/codeconsortium/CrumbTrailBundle).
-4. [CCDNComponent CommonBundle](https://github.com/codeconsortium/CommonBundle).
+1. [FOSUserBundle](http://github.com/FriendsOfSymfony/FOSUserBundle).
+2. [EWZTimeBundle](http://github.com/excelwebzone/EWZRecaptchaBundle).
+3. [PagerFanta](https://github.com/whiteoctober/Pagerfanta).
+4. [PagerFantaBundle](http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle).
+5. [CCDNComponent CommonBundle](https://github.com/codeconsortium/CommonBundle).
+6. [CCDNComponent BBCodeBundle](https://github.com/codeconsortium/BBCodeBundle).
+7. [CCDNComponent CrumbTrailBundle](https://github.com/codeconsortium/CrumbTrailBundle).
 	  
 Installation:
 -------------
@@ -58,10 +61,6 @@ Installation:
 [BBCodeBundle]
     git=http://github.com/codeconsortium/BBCodeBundle.git
     target=/bundles/CCDNComponent/BBCodeBundle
-
-[CrumbTrailBundle]
-    git=http://github.com/codeconsortium/CrumbTrailBundle.git
-    target=/bundles/CCDNComponent/CrumbTrailBundle
 
 [CrumbTrailBundle]
     git=http://github.com/codeconsortium/CrumbTrailBundle.git
