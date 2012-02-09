@@ -65,7 +65,10 @@ class CCDNForumForumAdminExtension extends Extension
 	 */
 	private function getCategorySection($container, $config)
 	{
-		
+		$container->setParameter('ccdn_forum_forum_admin.category.layout_templates.create', $config['category']['layout_templates']['create']);
+		$container->setParameter('ccdn_forum_forum_admin.category.layout_templates.delete_category', $config['category']['layout_templates']['delete_category']);
+		$container->setParameter('ccdn_forum_forum_admin.category.layout_templates.edit', $config['category']['layout_templates']['edit']);
+		$container->setParameter('ccdn_forum_forum_admin.category.layout_templates.index', $config['category']['layout_templates']['index']);
 	}
 
 
@@ -77,6 +80,10 @@ class CCDNForumForumAdminExtension extends Extension
 	private function getBoardSection($container, $config)
 	{
 		$container->setParameter('ccdn_forum_forum_admin.board.topics_per_page', $config['board']['topics_per_page']);
+		
+		$container->setParameter('ccdn_forum_forum_admin.board.layout_templates.create', $config['board']['layout_templates']['create']);
+		$container->setParameter('ccdn_forum_forum_admin.board.layout_templates.delete_board', $config['board']['layout_templates']['delete_board']);
+		$container->setParameter('ccdn_forum_forum_admin.board.layout_templates.edit', $config['board']['layout_templates']['edit']);
 	}
 	
 }

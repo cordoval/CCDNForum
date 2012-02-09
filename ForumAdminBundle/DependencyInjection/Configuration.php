@@ -71,7 +71,18 @@ class Configuration implements ConfigurationInterface
 	{
 		$node
 			->children()
-			
+				->arrayNode('category')
+					->children()
+						->arrayNode('layout_templates')
+							->children()
+								->scalarNode('create')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('delete_category')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('edit')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('index')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+							->end()
+						->end()
+					->end()
+				->end()
 			->end();		
 	}
 	
@@ -88,6 +99,13 @@ class Configuration implements ConfigurationInterface
 				->arrayNode('board')
 					->children()
 						->scalarNode('topics_per_page')->defaultValue('40')->end()
+						->arrayNode('layout_templates')
+							->children()
+								->scalarNode('create')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('delete_board')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('edit')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+							->end()
+						->end()
 					->end()
 				->end()
 			->end();
