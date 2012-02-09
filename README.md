@@ -23,10 +23,10 @@ file that was distributed with this source code.
 Dependencies:
 -------------
 
-[PagerFanta](https://github.com/whiteoctober/Pagerfanta)
-[CCDNComponent BBCodeBundle](https://github.com/codeconsortium/BBCodeBundle)
-[CCDNComponent CrumbTrailBundle](https://github.com/codeconsortium/CrumbTrailBundle)
-[CCDNComponent CommonBundle](https://github.com/codeconsortium/CommonBundle)
+1. [PagerFanta](https://github.com/whiteoctober/Pagerfanta).
+2. [CCDNComponent BBCodeBundle](https://github.com/codeconsortium/BBCodeBundle).
+3. [CCDNComponent CrumbTrailBundle](https://github.com/codeconsortium/CrumbTrailBundle).
+4. [CCDNComponent CommonBundle](https://github.com/codeconsortium/CommonBundle).
 	  
 Installation:
 -------------
