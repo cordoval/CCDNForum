@@ -77,7 +77,7 @@ class PostType extends AbstractType
 		}
 		
 		$userId = $this->options['user']->getId();
-		$attachments = $this->container->get('ccdn_component_attachment.attachment.repository')->findForUserByIdAsQB($userId);
+        $attachments = $this->container->get('ccdn_component_attachment.attachment.repository')->findForUserByIdAsQB($userId);
 		
 		$builder->add('attachment', 'entity', array(
 		    'class' => 'CCDNComponentAttachmentBundle:Attachment',
